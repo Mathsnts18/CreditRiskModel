@@ -2,7 +2,7 @@
 [![risco de credito](https://github.com/Mathsnts18/risco_de_credito/assets/140824110/9bea7629-d300-448b-9919-1dce42f62139)](https://github.com/Mathsnts18/risco_de_credito/blob/main/notebooks/risco_de_credito.ipynb)
 
 ## 📌 Visão geral 
-Esse projeto visa identificar potenciais clientes inadimplentes de uma instituição de cartão de crédito. Utilizamos técnicas de técnicas de análise de dados e machine learning para detectar possiveis inadimplencias e reduzir prejuízos futuros.
+Esse projeto visa identificar potenciais clientes inadimplentes de uma instituição de cartão de crédito. Utilizamos técnicas de análise de dados e machine learning para detectar possiveis inadimplencias e reduzir prejuízos futuros.
 
 [Veja o notebook](https://github.com/Mathsnts18/risco_de_credito/blob/main/notebooks/risco_de_credito.ipynb)
 
