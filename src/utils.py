@@ -1,6 +1,12 @@
+import sys
+import os
+import dill
+
 import pandas as pd
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import OneHotEncoder
+from src.exception import CustomException
+
 
 class DataWrangling(BaseEstimator, TransformerMixin):
     def fit(self, X, y=None):
@@ -31,8 +37,8 @@ class DataWrangling(BaseEstimator, TransformerMixin):
         }
         X_copy['EDUCATION_CAT'] = X_copy['EDUCATION'].map(edu_cat_mapping)
 
-        # Removendo as features PAY_
-        X_copy = X_copy.drop(['PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6'], axis=1)
+        # Removendo as features ID e PAY_ 
+        X_copy = X_copy.drop(['ID', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6'], axis=1)
 
         return X_copy
 
@@ -59,3 +65,14 @@ class OneHotFeatureEncoder(BaseEstimator, TransformerMixin):
         X = pd.concat([X, onehot_df], axis=1)
         
         return X
+
+def save_object(file_path, obj):
+    try:
+        dir_path = os.path.dirname(file_path)
+        os.makedirs(dir_path, exist_ok=True)
+
+        with open(file_path, 'wb') as file_obj:
+            dill.dump(obj, file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
