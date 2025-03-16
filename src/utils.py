@@ -14,12 +14,18 @@ class DataWrangling(BaseEstimator, TransformerMixin):
 
     def transform(self, X):
         X_copy = X.copy()
-        
+
         # Removendo as linhas com apenas 0
-        X_zero = X_copy == 0
+        X_zero = (X_copy == 0) | (X_copy == '0')
         feats_zero = X_zero.iloc[:,1:].all(axis=1)
         X_copy = X_copy.loc[~feats_zero,:]
 
+        # Conversão monetaria
+        taxa_cambio = 0.17636 #14/03/2025
+        feats_price = ['LIMIT_BAL', 'BILL_AMT1', 'BILL_AMT2', 'BILL_AMT3', 'BILL_AMT4', 'BILL_AMT5', 'BILL_AMT6','PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']
+
+        X_copy[feats_price] = X_copy[feats_price] * taxa_cambio
+        
         # Alterando o 'PAY_1' para seu valor mais frequente
         X_copy = X_copy.replace({'PAY_1': 'Not available'}, X_copy['PAY_1'].mode().values[0])
         X_copy['PAY_1'] = X_copy['PAY_1'].astype(int)
