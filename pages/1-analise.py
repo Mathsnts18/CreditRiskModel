@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import plotly.express as px
+import plotly.subplots as sp
 import plotly.graph_objects as go
 import sys
 import os
@@ -214,3 +216,45 @@ fig.update_layout(
 st.plotly_chart(fig)
 
 st.markdown('Aparentemente, contas com limites menores de créditos, de aproximadamente NT$ 150,000 são relativamente mais propensas a inadimplir. O que faz sentido ao entender que as instituições dão limites menores a conntas que apresentam mais risco de inadimplência.')
+
+st.subheader('`PAY_AMT`')
+
+# Features de PAY_AMT
+pay_amt_feats = ['PAY_AMT1', 'PAY_AMT2', 'PAY_AMT3', 'PAY_AMT4', 'PAY_AMT5', 'PAY_AMT6']
+zero_mask = df[pay_amt_feats] != 0  
+
+# Aplicando log10
+pay_amt_log = df[pay_amt_feats][zero_mask].apply(np.log10)
+pay_amt = pd.concat([pay_amt_log, df['default payment next month']], axis=1)
+
+# Criando subplots com Plotly
+fig = sp.make_subplots(rows=2, cols=3, subplot_titles=pay_amt_feats)
+
+# Definição de cores
+colors = {0: '#669bbc', 1: '#bc4749'}
+
+# Loop para adicionar histogramas a cada subplot
+for i, col in enumerate(pay_amt_feats):
+    row = i // 3 + 1
+    col_pos = i % 3 + 1 
+    
+    for label in [0, 1]:  # 0 = Adimplente, 1 = Inadimplente
+        fig.add_trace(
+            px.histogram(pay_amt[pay_amt['default payment next month'] == label], x=col, nbins=100, opacity=0.6).data[0],
+            row=row, col=col_pos
+        )
+        fig.data[-1].marker.color = colors[label]
+        fig.data[-1].name = "Inadimplente" if label == 1 else "Adimplente"
+
+# Ajustando layout
+fig.update_layout(
+    title="Distribuição dos Pagamentos (log10)",
+    barmode='overlay',
+    showlegend=True,
+    height=600,
+    width=1000
+)
+
+st.plotly_chart(fig)
+
+st.markdown('Os gráficos mostram uma relação entre as variáveis `PAY_AMT` e a variável alvo `default payment next month`. Observa-se que, ao longo do tempo, essa relação vai se tornando menos evidente. Nos pagamentos mais recentes, há uma distorção na curva para a esquerda, indicando que clientes que realizam pagamentos menores tendem a ter uma maior probabilidade de inadimplência.')

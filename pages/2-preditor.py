@@ -7,6 +7,7 @@ import mlflow
 
 sys.path.append(os.path.abspath(".."))
 from src.utils import DataWrangling
+from src.utils import load_object
 
 # ----- FUNCTIONS -----
 
@@ -26,15 +27,15 @@ df = load_data()
 
 # ----- MODEL -----
 
-mlflow.set_tracking_uri('http://127.0.0.1:5000')
-client = mlflow.client.MlflowClient()
-version = max([int(i.version) for i in client.get_latest_versions('CreditRisk')])
-
-model = mlflow.sklearn.load_model(f'models:/CreditRisk/{version}')
+model_path='artifacts/model.pkl'
+model = load_object(file_path=model_path)
 
 # ----- PAGE -----
 
-st.header('🤖 Preditor de Risco de Inadimplência')
+st.title('''
+         🤖 Preditor de Risco de Inadimplência
+         ---
+         ''')
 st.subheader('Insira os dados e calcule a probabilidade do cliente inadimplir')
 
 # Inputs do usuário
@@ -118,5 +119,3 @@ with st.container():
     if st.button('Previsão'):
         prob = (model.predict_proba(input_df)[:,1][0])*100
         st.markdown(f'##### O cliente tem {prob.round(2)}% de chance de inadimplir')
-
-st.markdown(f'Versão do modelo: {version}')

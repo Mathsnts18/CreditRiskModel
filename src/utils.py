@@ -44,7 +44,7 @@ class DataWrangling(BaseEstimator, TransformerMixin):
         X_copy['EDUCATION_CAT'] = X_copy['EDUCATION'].map(edu_cat_mapping)
 
         # Removendo as features ID e PAY_ 
-        X_copy = X_copy.drop(['ID', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6'], axis=1)
+        X_copy = X_copy.drop(['ID', 'PAY_2', 'PAY_3', 'PAY_4', 'PAY_5', 'PAY_6', 'SEX'], axis=1)
 
         return X_copy
 
@@ -82,3 +82,11 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
+    
+def load_object(file_path):
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return dill.load(file_obj)
+        
+    except Exception as e:
+        raise CustomException(e, sys)   
