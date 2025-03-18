@@ -176,3 +176,5 @@ mlruns/
 mlartifacts/
 .vscode/
 mlruns/
+.vscode
+.devcontainer/
