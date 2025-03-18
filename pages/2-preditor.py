@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 import sys
 import os
-import mlflow
 
 sys.path.append(os.path.abspath(".."))
 from src.utils import DataWrangling
