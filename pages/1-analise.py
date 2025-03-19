@@ -58,26 +58,25 @@ st.title('''
 
 st.header('📌 Visão Geral')
     
-st.markdown('Esse projeto visa identificar potenciais clientes inadimplentes de uma instituição de cartão de crédito. Foram utilizadas técnicas de análise de dados e machine learning para detectar possiveis inadimplências e reduzir prejuízos futuros.')
+st.markdown('Esse projeto teve como objetivo identificar potenciais clientes inadimplentes de uma instituição de cartão de crédito. Foram utilizadas técnicas de análise de dados e machine learning para detectar possíveis inadimplências e reduzir prejuízos futuros.')
 
 st.header('💼 Entendimento do Negócio')
 
 st.markdown('''
-    De acordo com o Instituto Locomotiva e MFM Tecnologia, oito em cada dez familias brasileiras estão individades e um terço têm dívidas em atraso. Os índices, que haviam piorado significativamente durante a pandemia da covid-19, já recuaram, mas ainda são elevados, segundo o relatório.
+    De acordo com o Instituto Locomotiva e MFM Tecnologia, oito em cada dez famílias brasileiras estiveram endividadas, e um terço teve dívidas em atraso. Os índices, que haviam piorado significativamente durante a pandemia da covid-19, já recuaram, mas ainda são elevados, segundo o relatório.
 
-    Um dos principais motivos para a inadimplência é o cartão de crédito, de acordo com a pesquisa. O meio de pagamentos foi a fonte de 60% dos débitos em aberto no ano de 2023. Deixar de liquidar dívidas junto a bancos e financeiras e empréstimos e financiamentos também tem sido um desafio para grande parte dos brasileiros. Uma parcela de 43% lida com isso atualmente, proporção que subiu em relação ao ano passado, quando era de 40%.
+    Um dos principais motivos para a inadimplência foi o cartão de crédito, de acordo com a pesquisa. O meio de pagamento foi a fonte de 60% dos débitos em aberto no ano de 2023. Deixar de liquidar dívidas junto a bancos e financeiras, assim como empréstimos e financiamentos, também tem sido um desafio para grande parte dos brasileiros. Uma parcela de 43% lidou com isso atualmente, proporção que subiu em relação ao ano passado, quando era de 40%.
 
-    Essa situação é prejudicial tanto para os consumidores quanto para as instituições financeiras. Detectar os padrões de consumidores que ficarão inadimplentes nos próximos meses e se planejar quanto a isso podem economizar milhões de reais.
-
+    Essa situação foi prejudicial tanto para os consumidores quanto para as instituições financeiras. Detectar os padrões de consumidores que ficaram inadimplentes nos últimos meses e ter se planejado quanto a isso poderiam ter economizado milhões de reais.
     ---
     ''')
     
 st.header('1. Introdução')
 
 st.markdown('''
-    O cliente, uma empresa de cartão de crédito, nos trouxe um dataset que inclui os dados demográficos e financeiros recentes de uma amostra de 30.000 clientes. Esses dados estão no nível de conta de crédito (ou seja, uma linha para cada conta). As linhas são rotuladas de acordo com se no mês seguinte ao período de dados histórico de seis meses um proprietário de conta ficou inadimplente, ou seja, não fez o pagamento mínimo.
+    O cliente, uma empresa de cartão de crédito, nos trouxe um dataset que incluiu os dados demográficos e financeiros recentes de uma amostra de 30.000 clientes. Esses dados estiveram no nível de conta de crédito (ou seja, uma linha para cada conta). As linhas foram rotuladas de acordo com se, no mês seguinte ao período de dados históricos de seis meses, um proprietário de conta ficou inadimplente, ou seja, não fez o pagamento mínimo.
 
-    **Objetivo**: Nosso objetivo como Cientista de Dados é desenvolver um modelo, com os dados fornecidos, que preveja se uma conta ficará inadimplente no próximo mês.
+    **Objetivo**: Nosso objetivo como Cientista de Dados foi desenvolver um modelo, com os dados fornecidos, que previsse se uma conta ficaria inadimplente no próximo mês.
 ''')
 
 
@@ -112,11 +111,11 @@ st.markdown('- Não há valores nulos ou duplicados')
 st.subheader('Limpeza e manipulação')
 
 st.markdown('''
-    - Foram identificados e removidos registros com valores zerados em todos suas features;
-    - Alterado o valor "Not available" da feature `PAY_1` para seu valor mais frequente;
-    - Alterado valores não identificados no dicionário nas features `EDUCATION` e `MARRIAGE` para outros;
-    - Criado nova feature de categoria para `EDUCATION`
-    - Foram identificados problemas na captura de dados das colunas `PAY_2`, `PAY_3`, `PAY_4`, `PAY_5` e `PAY_6` e por isso foram removidas;
+    - Foram identificados e removidos registros com valores zerados em todas as suas features;
+    - O valor "Not available" da feature `PAY_1` foi alterado para seu valor mais frequente;
+    - Valores não identificados no dicionário nas features `EDUCATION` e `MARRIAGE` foram alterados para outros;
+    - Uma nova feature de categoria para `EDUCATION` foi criada;
+    - Problemas na captura de dados das colunas `PAY_2`, `PAY_3`, `PAY_4`, `PAY_5` e `PAY_6` foram identificados, e por isso, essas colunas foram removidas.
     '''
 )
 
@@ -142,7 +141,7 @@ st.plotly_chart(
 
 st.markdown(
     '''
-    Uma característica muito comum em problemas de inadimplência é o desbalanceamento de dados. Em nosso dataset podemos observar que apenas 22% da nossa base é considerada inadimplente.
+    Uma característica muito comum em problemas de inadimplência foi o desbalanceamento de dados. Em nosso dataset, pôde-se observar que apenas 22% da nossa base foi considerada inadimplente.
     '''
 )
 
@@ -181,7 +180,7 @@ st.plotly_chart(fig)
 
 st.markdown(
     '''
-    O gráfico acima mostra uma informação muito importante: quem já inadimpliu apresenta uma tendência maior de fazê-lo novamente. A taxa de inadimplência de contas em boa situação está bem abaixo da taxa geral e pelo menos 30% das contas que estavam inadimplentes no último mês estarão inadimplentes novamente.
+    O gráfico acima mostrou uma informação muito importante: quem já havia inadimplido apresentou uma tendência maior de fazê-lo novamente. A taxa de inadimplência de contas que estavam em boa situação ficou bem abaixo da taxa geral, e pelo menos 30% das contas que estavam inadimplentes no último mês ficaram inadimplentes novamente.
     '''
 )
 
@@ -215,7 +214,9 @@ fig.update_layout(
 
 st.plotly_chart(fig)
 
-st.markdown('Aparentemente, contas com limites menores de créditos, de aproximadamente NT$ 150,000 são relativamente mais propensas a inadimplir. O que faz sentido ao entender que as instituições dão limites menores a conntas que apresentam mais risco de inadimplência.')
+st.markdown('''
+    Aparentemente, contas com limites menores de crédito, de aproximadamente R$ 26.5500, foram relativamente mais propensas a inadimplir. O que fez sentido ao entender que as instituições deram limites menores a contas que apresentavam mais risco de inadimplência.
+    ''')
 
 st.subheader('`PAY_AMT`')
 
@@ -257,4 +258,4 @@ fig.update_layout(
 
 st.plotly_chart(fig)
 
-st.markdown('Os gráficos mostram uma relação entre as variáveis `PAY_AMT` e a variável alvo `default payment next month`. Observa-se que, ao longo do tempo, essa relação vai se tornando menos evidente. Nos pagamentos mais recentes, há uma distorção na curva para a esquerda, indicando que clientes que realizam pagamentos menores tendem a ter uma maior probabilidade de inadimplência.')
+st.markdown('Os gráficos mostraram uma relação entre as variáveis `PAY_AMT` e a variável alvo `default payment next month`. Observou-se que, ao longo do tempo, essa relação foi se tornando menos evidente. Nos pagamentos mais recentes, houve uma distorção na curva para a esquerda, indicando que clientes que realizaram pagamentos menores tiveram uma maior probabilidade de inadimplência.')

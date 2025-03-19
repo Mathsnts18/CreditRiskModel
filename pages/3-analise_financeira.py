@@ -74,13 +74,15 @@ st.title('''
          ---
          ''')
 
-st.markdown('Para fazer uma analise financeira, vamos supor o caso de que, para as contas de crédito que estejam em alto risco de inadimplência será oferecido um aconselhamento ao titular que custará R$ 1.300,00 para a empresa com uma taxa de sucesso esperada de 70% para que paguem sua dívida a tempo ou façam acordos alternativos. Os possiveis benefícios do aconselhamento bem-sucedido são que o valor da cobrança mensal de uma conta será percebido como economia, se ela fosse ficar inadimplente, mas não ficou como resultado da conversa.')
+st.markdown('''
+    Para fazer uma análise financeira, foi suposto o caso de que, para as contas de crédito que estivessem em alto risco de inadimplência, seria oferecido um aconselhamento ao titular, que custaria R$ 1.300,00 para a empresa, com uma taxa de sucesso esperada de 70% para que pagassem sua dívida a tempo ou fizessem acordos alternativos. Os possíveis benefícios do aconselhamento bem-sucedido foram que o valor da cobrança mensal de uma conta foi percebido como economia, caso ela fosse ficar inadimplente, mas não ficou como resultado da conversa.
+    ''')
             
-st.markdown('Portanto, vamos calcular os custos e a economia esperada em um intervalo de limites.')
+st.markdown('Portanto, foram calculados os custos e a economia esperada em um intervalo de limites.')
 
 st.markdown('---')
 
-st.markdown('Para calcular a possivel economia alcançada com a não inadimplência, usaremos o valor médio da ultima fatura mensal de todas as contas')
+st.markdown('Para calcular a possível economia alcançada com a não inadimplência, foi usado o valor médio da última fatura mensal de todas as contas.')
 
 economia_por_inadimplencia = df['BILL_AMT1'].mean()
 
@@ -125,5 +127,5 @@ max_savings_ix = np.argmax(economia_liquida)
 max_threshold = thresholds[max_savings_ix].round(2)
 max_economia = economia_liquida[max_savings_ix].round(2)
 
-st.markdown(f'##### O limite que representa a maior economia é: {max_threshold}')
-st.markdown(f'##### A maior economia liquida possivel é de R$ {max_economia}')
+st.markdown(f'##### O limite que representou a maior economia foi: {max_threshold}')
+st.markdown(f'##### A maior economia liquida possivel foi de R$ {max_economia}')
