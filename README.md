@@ -6,7 +6,7 @@
 | Autor         | [Matheus Santos](https://www.linkedin.com/in/mathsantos94/) |
 | Modelo        | Risco de crédito    |
 | Linguagem    | Python    |
-| EDA | Notebook |
+| EDA | [Notebook](notebooks/eda.ipynb) |
 | Aplicação     | [StreamLit](https://creditriskmodel-mathsnts08.streamlit.app/)    |
 | Instalação    | [Clique aqui](https://github.com/Mathsnts18/CreditRiskModel?tab=readme-ov-file#-instala%C3%A7%C3%A3o-do-projeto)    |
 
@@ -27,8 +27,6 @@ O CRISP-DM serve como um roteiro para organizar e executar projetos de dados, ga
 
 ## 📌 Visão geral 
 Esse projeto teve como objetivo identificar potenciais clientes inadimplentes de uma instituição de cartão de crédito. Foram utilizadas técnicas de análise de dados e machine learning para detectar possíveis inadimplências e reduzir prejuízos futuros.
-
-[Veja o notebook](notebooks/eda.ipynb)
 
 ## 💼 Entendimento do Negócio
 
@@ -78,27 +76,27 @@ O cliente, uma empresa de cartão de crédito, nos trouxe um dataset que incluiu
 ### 3. Análise Exploratória dos Dados
 
 #### `default payment next month`
-![target](image.png)
+![target](imgs/image.png)
 
 Uma característica muito comum em problemas de inadimplência foi o desbalanceamento de dados. Em nosso dataset, pôde-se observar que apenas 22% da nossa base foi considerada inadimplente.
 
 #### `PAY_1`
-![PAY_1](image-1.png)
+![PAY_1](imgs/image-1.png)
 
 O gráfico acima mostrou uma informação muito importante: quem já havia inadimplido apresentou uma tendência maior de fazê-lo novamente. A taxa de inadimplência de contas que estavam em boa situação ficou bem abaixo da taxa geral, e pelo menos 30% das contas que estavam inadimplentes no último mês ficaram inadimplentes novamente.
 
 #### `LIMIT_BAL`
-![LIMIT_BAL](image-2.png)
+![LIMIT_BAL](imgs/image-2.png)
 
 Aparentemente, contas com limites menores de crédito, de aproximadamente R$ 26.5500, foram relativamente mais propensas a inadimplir. O que fez sentido ao entender que as instituições deram limites menores a contas que apresentavam mais risco de inadimplência.
 
 #### `PAY_AMT`
-![PAY_AMT](image-3.png)
+![PAY_AMT](imgs/image-3.png)
 
 Os gráficos mostraram uma relação entre as variáveis PAY_AMT e a variável alvo default payment next month. Observou-se que, ao longo do tempo, essa relação foi se tornando menos evidente. Nos pagamentos mais recentes, houve uma distorção na curva para a esquerda, indicando que clientes que realizaram pagamentos menores tiveram uma maior probabilidade de inadimplência.
 
 ## 🤖 Modelagem
-![MLflow](image-4.png)
+![MLflow](imgs/image-4.png)
 
 Neste projeto, utilizamos o MLflow para gerenciar, rastrear e versionar os experimentos de machine learning, garantindo eficiência, reprodutibilidade e transparência no processo.
 
