@@ -68,6 +68,7 @@ st.markdown('''
     Um dos principais motivos para a inadimplência foi o cartão de crédito, de acordo com a pesquisa. O meio de pagamento foi a fonte de 60% dos débitos em aberto no ano de 2023. Deixar de liquidar dívidas junto a bancos e financeiras, assim como empréstimos e financiamentos, também tem sido um desafio para grande parte dos brasileiros. Uma parcela de 43% lidou com isso atualmente, proporção que subiu em relação ao ano passado, quando era de 40%.
 
     Essa situação foi prejudicial tanto para os consumidores quanto para as instituições financeiras. Detectar os padrões de consumidores que ficaram inadimplentes nos últimos meses e ter se planejado quanto a isso poderiam ter economizado milhões de reais.
+    
     ---
     ''')
     
